@@ -1,0 +1,43 @@
+# Keycloak + PostgreSQL for local development.
+# Data (realms, clients, users, roles, groups) is stored in PostgreSQL tables
+# and survives `docker compose down` / restarts. Only `docker compose down -v`
+# deletes it (that removes the volume).
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: keycloak-postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak        # local only - change for anything shared
+    ports:
+      - "5433:5432"                      # host 5433 avoids clashing with a local PostgreSQL on 5432
+    volumes:
+      - keycloak-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U keycloak -d keycloak"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+      # Used only on the very first start, when no admin exists yet
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  keycloak-db:
