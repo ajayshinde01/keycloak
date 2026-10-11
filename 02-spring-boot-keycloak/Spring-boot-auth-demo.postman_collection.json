@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "a70ad04f-c982-41d3-8be3-bfc476485186",
+    "name": "Spring-boot-auth-demo",
+    "description": "This postman collection refers to collection of endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4699235",
+    "_collection_link": "https://go.postman.co/collection/4699235-a70ad04f-c982-41d3-8be3-bfc476485186?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Admin Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "spring-boot-api"
+            },
+            {
+              "key": "grant_type",
+              "value": "password"
+            },
+            {
+              "key": "username",
+              "value": "admin"
+            },
+            {
+              "key": "password",
+              "value": "admin123"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/realms/demo/protocol/openid-connect/token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "realms",
+            "demo",
+            "protocol",
+            "openid-connect",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "User Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "spring-boot-api"
+            },
+            {
+              "key": "grant_type",
+              "value": "password"
+            },
+            {
+              "key": "username",
+              "value": "ajay"
+            },
+            {
+              "key": "password",
+              "value": "ajay123"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/realms/demo/protocol/openid-connect/token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "realms",
+            "demo",
+            "protocol",
+            "openid-connect",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Roles and username",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/me",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all accounts",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3VVA3MUNqcmtPYi1xZGFnNFR2ZzYxNk0xWjVnb3diZTVZS1ZLalUwWFg0In0.eyJleHAiOjE3OTE2Mjg4MTgsImlhdCI6MTc5MTYyODUxOCwianRpIjoib25ydHJvOjQ4YmJhYjhiLTNkM2QtN2Q0MC00ZjZhLWIyYjBmN2JkOTc2YyIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvZGVtbyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1ZDQ0MmNjZC0wNmE5LTQwZGQtOGY5OS01OWIxMzYwZDNlMjUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzcHJpbmctYm9vdC1hcGkiLCJzaWQiOiJRdjJJb1JfZ0hZZzhYUEtDYXp5TXA0cjAiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWRlbW8iLCJVU0VSIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJBamF5IFVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhamF5IiwiZ2l2ZW5fbmFtZSI6IkFqYXkiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6ImFqYXlAZXhhbXBsZS5jb20ifQ.FS-Aki9X6qajc3FfOmI-UoNBNA_SEIqbeX6LJCn8j1_ckb3ipFWVI177xh10FNF-5hPKKNX4lM7PG0RGB4jDsMPsh-iMqNJfnw91GlX70mciy6gSe9H87vDqMYcJTciZPtfuXxziPjHjJZOUMDPALPVnJfgh__tmbQ1IZ-nYkzV8p3P6ZkRSdwAfNweqyJPuMo9xvAfY_ayreaSU7pjEE2sSDAoTlGgglsplJF2w75j4Fzr0H-WF_GaMfWInDyTRqWn2glMmw9dZ3IZ9ytEioxY5BkDFuEHxbY-3zcoWG1c_Tbl7Bp3eLAiTVxsIc82o6K4qjvSJyZW-Js7WNOeN-A",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/accounts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Account",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3VVA3MUNqcmtPYi1xZGFnNFR2ZzYxNk0xWjVnb3diZTVZS1ZLalUwWFg0In0.eyJleHAiOjE3OTE2MjkwMDksImlhdCI6MTc5MTYyODcwOSwianRpIjoib25ydHJvOjNkMTJjY2QyLWRkM2UtYTUwYy1mNDg4LTgyYThmZGI3NzQwZiIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvZGVtbyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI0YzBjNmVjZi0zMmNlLTQyOTMtYTllYy1jYzkxMzNmYzg0Y2UiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzcHJpbmctYm9vdC1hcGkiLCJzaWQiOiJMbWJGMjJkODR5UjRlTDFxc2phLW5LUjQiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJBRE1JTiIsImRlZmF1bHQtcm9sZXMtZGVtbyIsIlVTRVIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkFkbWluIFVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImdpdmVuX25hbWUiOiJBZG1pbiIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.hNv8poiUXNTMjRxaI5ZCarizzgqk2RQ3yOz-U6ksiSzlyUX3TGmjIV61Eds8RLhu_j_2E9ZZLEjh6RSJ1joE84wdb836WbLtdTP3j3M5K4Xt8av4JzmmWTGaCdIbTljhgHYoWp2sGx_3Uju63upx1Ed1p3kmCSedkB9lqUYl_1RzDxllsrzagPc9CLZ1jLSM3gRunvW1SVfqaUDZ5Nt3pCbajY_0ZQZw3MXCIkya0OHj65G2qWPoQxDWs7gNCf5qU2bBlF0vybQeytofe0GnNb8o8wwa_258rHD87iffx928BuBgjlMseggG-YnP3B2gbxFnJbtudRElPAkPusrkVw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/accounts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete account",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3VVA3MUNqcmtPYi1xZGFnNFR2ZzYxNk0xWjVnb3diZTVZS1ZLalUwWFg0In0.eyJleHAiOjE3OTE2MjY1NjYsImlhdCI6MTc5MTYyNjI2NiwianRpIjoib25ydHJvOjI5MmE0MzRlLWU2ZDItZTk3Ni02ZGJmLTU4ZTVmNjc4YTliYyIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9yZWFsbXMvZGVtbyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI0YzBjNmVjZi0zMmNlLTQyOTMtYTllYy1jYzkxMzNmYzg0Y2UiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzcHJpbmctYm9vdC1hcGkiLCJzaWQiOiJPbmhYemhTQkhKY1hzTy02WTFIbDlHQkwiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJBRE1JTiIsImRlZmF1bHQtcm9sZXMtZGVtbyIsIlVTRVIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkFkbWluIFVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiIsImdpdmVuX25hbWUiOiJBZG1pbiIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20ifQ.GZLqvAfP32gMBDnrtn4gx8yLeKEk5EWBvrObnoMmfYq3QiWGg8aU5lEywwWuVp_Jzeqh850_ap1Elj5vYK0YF2V6YqYVoDGqF8hJJSKbj1kw4DE8Qiw5F34WIm--2MS0LQ48_2jWtSqb72dc-v_joln_Pz8woI3e5eYgBJazNVb8jofixVVS7aDbSEvqMaEJvZoJWlvHYVRTqqbR4749aUu_g1_dDPwhg0-IKF2te7snR6V86IUTsJW4gX7nQCJOd-Ablxp2qCvXOtlqhAWYnFlGe7uFJP5Z_kJH_1gELpFHPaArbPj_ef_9tUgZ-S9r0lL9Cca6GalOShJfvV1rQg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/accounts/42",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "accounts",
+            "42"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Public endpoint",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/public",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "public"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
